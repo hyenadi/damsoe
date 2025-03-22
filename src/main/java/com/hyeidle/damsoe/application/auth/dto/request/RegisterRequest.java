@@ -10,7 +10,7 @@ public record RegisterRequest(
 	String email,
 
 	@NotBlank(message = "패스워드는 필수입니다.")
-	@Size(min = 10, message = "패스워드는 10글자 이상이어야 합니다.")
+	@Size(min = 8, message = "패스워드는 8글자 이상이어야 합니다.")
 	String password,
 
 	@NotBlank(message = "전화번호는 필수입니다.")
