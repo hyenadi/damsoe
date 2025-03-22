@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <title>테스트 앱</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+
+</head>
+<body>
+<div class="tabs">
+    <button class="tab-btn active" data-tab="register">회원가입</button>
+    <button class="tab-btn" data-tab="login">로그인</button>
+    <button class="tab-btn" data-tab="chat">채팅</button>
+</div>
+
+
+<div class="tab-content" id="register">
+    <h2>회원가입</h2>
+    <form id="registerForm">
+        <input type="email" id="email" placeholder="이메일" required/>
+        <input type="password" id="password" placeholder="비밀번호 (8자 이상)" required/>
+        <input type="tel" id="tel" placeholder="전화번호" required/>
+        <button type="submit">가입</button>
+    </form>
+    <div id="result"></div>
+</div>
+
+<!-- 비어있는 탭들 (비활성화됨) -->
+<div class="tab-content" id="login" style="display: none;">
+    <h2>로그인</h2>
+    <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="이메일" required/>
+        <input type="password" id="loginPassword" placeholder="비밀번호" required/>
+        <input type="tel" id="loginTel" placeholder="전화번호" required/>
+        <button type="submit">로그인</button>
+    </form>
+    <div id="loginResult"></div>
+</div>
+
+<div class="tab-content" id="chat" style="display: none;">
+    <p>채팅 기능 준비 중...</p>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/register.js"></script>
+<script src="/js/login.js"></script>
+
+</body>
+</html>
