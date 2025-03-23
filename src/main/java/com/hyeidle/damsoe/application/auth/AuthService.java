@@ -1,5 +1,7 @@
 package com.hyeidle.damsoe.application.auth;
 
+import java.time.LocalDate;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,8 +26,22 @@ public class AuthService {
 		if (userRepository.existsByEmail(request.email())) {
 			throw new EmailAlreadyExistsException("이미 사용중인 이메일입니다.");
 		}
+
 		String passwordHash = passwordEncoder.encode(request.password());
-		User user = new User(request.email(), passwordHash, request.tel());
+
+		LocalDate birthDate = LocalDate.parse(request.birthDate());
+
+		User user = new User(
+			request.email(),
+			passwordHash,
+			request.tel(),
+			request.name(),
+			request.gender(),
+			birthDate,
+			request.location(),
+			request.education()
+		);
+
 		user = userRepository.save(user);
 		return user.getId().toString();
 	}

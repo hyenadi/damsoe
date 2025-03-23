@@ -3,13 +3,12 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
     const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("loginPassword").value;
-    const tel = document.getElementById("loginTel").value;
 
     try {
         const res = await fetch("/api/auth/login", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({email, password, tel})
+            body: JSON.stringify({email, password})
         });
 
         const resultDiv = document.getElementById("loginResult");

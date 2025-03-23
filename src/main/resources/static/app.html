@@ -20,6 +20,61 @@
         <input type="email" id="email" placeholder="이메일" required/>
         <input type="password" id="password" placeholder="비밀번호 (8자 이상)" required/>
         <input type="tel" id="tel" placeholder="전화번호" required/>
+
+        <input type="text" id="name" placeholder="이름" required/>
+
+        <div>
+            <label>성별:</label>
+            <input type="radio" name="gender" id="male" value="남성" required/>
+            <label for="male">남성</label>
+            <input type="radio" name="gender" id="female" value="여성" required/>
+            <label for="female">여성</label>
+        </div>
+
+        <label for="birthDate">출생일:</label>
+        <input type="date" id="birthDate" required/>
+
+        <label for="location">거주지역:</label>
+        <select id="location" required>
+            <option value="">거주지역</option>
+            <option value="서울">서울</option>
+            <option value="수원/화성">수원/화성</option>
+            <option value="인천">인천</option>
+            <option value="천안/당진">천안/당진</option>
+            <option value="청주">청주</option>
+            <option value="대전">대전</option>
+            <option value="전주">전주</option>
+            <option value="광주">광주</option>
+            <option value="대구">대구</option>
+            <option value="부산/양산">부산/양산</option>
+            <option value="울산">울산</option>
+            <option value="창원">창원</option>
+            <option value="경기">경기</option>
+            <option value="평택/오산">평택/오산</option>
+            <option value="세종">세종</option>
+            <option value="충북">충북</option>
+            <option value="충남">충남</option>
+            <option value="아산">아산</option>
+            <option value="전북">전북</option>
+            <option value="전남">전남</option>
+            <option value="경북">경북</option>
+            <option value="강원">강원</option>
+            <option value="경남">경남</option>
+            <option value="제주">제주</option>
+        </select>
+
+        <label for="education">학력:</label>
+        <select id="education" required>
+            <option value="">학력</option>
+            <option value="대학교졸업">대학교졸업</option>
+            <option value="대학교중퇴">대학교중퇴</option>
+            <option value="대학교재학">대학교재학</option>
+            <option value="대학원졸업">대학원졸업</option>
+            <option value="대학(2,3년제)졸업">대학(2,3년제)졸업</option>
+            <option value="대학(2,3년제)중퇴">대학(2,3년제)중퇴</option>
+            <option value="고등학교 졸업">고등학교 졸업</option>
+            <option value="기타">기타</option>
+        </select>
         <button type="submit">가입</button>
     </form>
     <div id="result"></div>
@@ -31,7 +86,6 @@
     <form id="loginForm">
         <input type="email" id="loginEmail" placeholder="이메일" required/>
         <input type="password" id="loginPassword" placeholder="비밀번호" required/>
-        <input type="tel" id="loginTel" placeholder="전화번호" required/>
         <button type="submit">로그인</button>
     </form>
     <div id="loginResult"></div>
