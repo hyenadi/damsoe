@@ -10,10 +10,6 @@ public record LoginRequest(
 	@NotBlank String email,
 
 	@NotBlank(message = "패스워드는 필수입니다.")
-	@NotBlank String password,
-
-	@NotBlank(message = "전화번호는 필수입니다.")
-	@NotBlank String tel
-
+	@NotBlank String password
 ) {
 }
