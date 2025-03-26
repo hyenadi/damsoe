@@ -25,7 +25,10 @@ public class JwtTokenProvider {
 
 	@PostConstruct
 	public void initKey() {
-		String secret = System.getProperty("JWT_SECRET"); // 또는 System.getenv("JWT_SECRET");
+		String secret = System.getProperty("JWT_SECRET");
+		if (secret == null || secret.isEmpty()) {
+			secret = System.getenv("JWT_SECRET"); // 환경변수로도 가져오기 시도
+		}
 		key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
 	}
 

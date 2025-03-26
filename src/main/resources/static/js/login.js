@@ -18,6 +18,8 @@ document.getElementById("loginForm").addEventListener("submit", async function (
             resultDiv.textContent = `로그인 성공! 사용자 ID: ${userInfo.userId} 사용자 email: ${userInfo.email}`;
             resultDiv.style.color = "green";
 
+            console.log(userInfo);
+
             // 토큰 저장
             localStorage.setItem("accessToken", userInfo.accessToken);
             localStorage.setItem("refreshToken", userInfo.refreshToken);
