@@ -64,7 +64,7 @@ jobs:
 
       - name: Set Spring environment variables
         run: |
-          # 이 부분이 중요합니다 - Spring 애플리케이션의 테스트 구성을 위한 환경 변수 설정
+          # 환경 변수 설정
           echo "SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/postgres" >> $GITHUB_ENV
           echo "SPRING_DATASOURCE_USERNAME=postgres" >> $GITHUB_ENV
           echo "SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV

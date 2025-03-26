@@ -43,3 +43,9 @@ services:
     depends_on:
       zookeeper:
         condition: service_started  # Zookeeper가 시작된 후 Kafka 시작
+        
+  redis:
+    image: redis:7.2
+    ports:
+      - "6379:6379"
+    restart: always
