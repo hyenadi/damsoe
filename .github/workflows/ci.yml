@@ -72,6 +72,7 @@ jobs:
           echo "SPRING_KAFKA_BOOTSTRAP_SERVERS=localhost:9092" >> $GITHUB_ENV
           # MongoDB 연결 설정 (필요한 경우)
           echo "SPRING_DATA_MONGODB_URI=mongodb://localhost:27017/test" >> $GITHUB_ENV
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> $GITHUB_ENV
 
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
