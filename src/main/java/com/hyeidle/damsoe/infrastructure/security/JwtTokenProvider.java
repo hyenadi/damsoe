@@ -7,6 +7,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
@@ -23,17 +24,8 @@ public class JwtTokenProvider {
 	private final long REFRESH_TOKEN_EXPIRATION = 1000L * 60 * 60 * 24 * 7;
 
 
-	@PostConstruct
-	public void initKey() {
-		String secret = System.getProperty("JWT_SECRET");
-		if (secret == null || secret.isEmpty()) {
-			secret = System.getenv("JWT_SECRET");
-		}
-		if (secret == null || secret.isEmpty()) {
-			throw new IllegalArgumentException("JWT_SECRET 값이 없습니다!");
-		}
-		System.out.println("JWT_SECRET 값 로드됨: " + secret);
-		key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+	public JwtTokenProvider(@Value("${jwt.secret}") String secret) {
+		this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
 	}
 
 	public String generateAccessToken(Long userId, String email) {

@@ -1,12 +1,9 @@
 spring:
   application:
     name: damsoe
-
-
   ai:
     openai:
       api-key: ${OPEN_APIKEY}
-
 
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/postgres}
@@ -56,5 +53,10 @@ springdoc:
     path: /swagger-ui.html
     operations-sorter: alpha
     tags-sorter: alpha
+
+
+jwt:
+  secret: ${JWT_TOKEN}
+
 
 
