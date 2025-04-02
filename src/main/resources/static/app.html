@@ -11,6 +11,7 @@
     <button class="tab-btn active" data-tab="register">회원가입</button>
     <button class="tab-btn" data-tab="login">로그인</button>
     <button class="tab-btn" data-tab="chat">채팅</button>
+    <button class="tab-btn disabled" data-tab="survey" id="surveyTab" disabled>설문조사</button>
 </div>
 
 
@@ -22,6 +23,7 @@
         <input type="tel" id="tel" placeholder="전화번호" required/>
 
         <input type="text" id="name" placeholder="이름" required/>
+        <input type="text" id="nickname" placeholder="닉네임" required/>
 
         <div>
             <label>성별:</label>
@@ -75,12 +77,13 @@
             <option value="고등학교 졸업">고등학교 졸업</option>
             <option value="기타">기타</option>
         </select>
+
+
         <button type="submit">가입</button>
     </form>
     <div id="result"></div>
 </div>
 
-<!-- 비어있는 탭들 (비활성화됨) -->
 <div class="tab-content" id="login" style="display: none;">
     <h2>로그인</h2>
     <form id="loginForm">
@@ -96,10 +99,77 @@
     <div id="chatResult"></div>
 </div>
 
+<div class="tab-content" id="survey" style="display: none;">
+    <h2>설문조사</h2>
+    <form id="surveyForm">
+        <label for="mbti">MBTI</label>
+        <input type="text" id="mbti" placeholder="예: INFP" required />
+
+        <label>성격 키워드</label>
+        <div class="checkbox-group" id="keywordsGroup">
+            <label><input type="checkbox" name="keywords" value="다정한" /> 다정한</label>
+            <label><input type="checkbox" name="keywords" value="유머러스한" /> 유머러스한</label>
+            <label><input type="checkbox" name="keywords" value="논리적인" /> 논리적인</label>
+            <label><input type="checkbox" name="keywords" value="차분한" /> 차분한</label>
+            <label><input type="checkbox" name="keywords" value="리더십" /> 리더십</label>
+            <label><input type="checkbox" name="keywords" value="귀여운" /> 귀여운</label>
+        </div>
+
+        <label for="speakingStyle">말투 스타일</label>
+        <select id="speakingStyle" required>
+            <option value="">선택</option>
+            <option value="다정한">다정한</option>
+            <option value="유머러스한">유머러스한</option>
+            <option value="직설적인">직설적인</option>
+        </select>
+
+        <label>관심 분야</label>
+        <div class="checkbox-group" id="hobbiesGroup">
+            <label><input type="checkbox" name="hobbies" value="여행" /> 여행</label>
+            <label><input type="checkbox" name="hobbies" value="독서" /> 독서</label>
+            <label><input type="checkbox" name="hobbies" value="게임" /> 게임</label>
+            <label><input type="checkbox" name="hobbies" value="영화 감상" /> 영화 감상</label>
+        </div>
+
+        <label>연애 스타일</label>
+        <div class="checkbox-group" id="loveStyleGroup">
+            <label><input type="checkbox" name="loveStyle" value="직진형" /> 직진형</label>
+            <label><input type="checkbox" name="loveStyle" value="배려형" /> 배려형</label>
+        </div>
+
+        <label>민감 주제</label>
+        <div class="checkbox-group" id="sensitiveTopicsGroup">
+            <label><input type="checkbox" name="sensitiveTopics" value="종교" /> 종교</label>
+            <label><input type="checkbox" name="sensitiveTopics" value="정치" /> 정치</label>
+            <label><input type="checkbox" name="sensitiveTopics" value="가정사" /> 가정사</label>
+        </div>
+
+        <label for="emotionStyle">감정 표현 방식</label>
+        <select id="emotionStyle" required>
+            <option value="">선택</option>
+            <option value="직접적">직접적</option>
+            <option value="돌려 말함">돌려 말함</option>
+        </select>
+
+        <label for="speechSpeed">대화 속도</label>
+        <select id="speechSpeed" required>
+            <option value="">선택</option>
+            <option value="빠름">빠름</option>
+            <option value="느림">느림</option>
+            <option value="상황에 따라 다름">상황에 따라 다름</option>
+        </select>
+
+        <button type="submit">제출</button>
+    </form>
+    <div id="surveyResult"></div>
+</div>
+
+
 <script src="/js/app.js"></script>
 <script src="/js/register.js"></script>
 <script src="/js/login.js"></script>
 <script src="/js/chat.js"></script>
+<script src="/js/survey.js"></script>
 
 </body>
 </html>

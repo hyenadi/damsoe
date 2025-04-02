@@ -30,7 +30,10 @@ public record RegisterRequest(
 	String location,
 
 	@NotBlank(message = "학력은 필수입니다.")
-	String education
+	String education,
+
+	@NotBlank(message = "닉네임은 필수입니다.")
+	String nickname
 
 ) {
 }

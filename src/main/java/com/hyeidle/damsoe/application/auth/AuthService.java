@@ -44,11 +44,12 @@ public class AuthService {
 			request.gender(),
 			birthDate,
 			request.location(),
-			request.education()
+			request.education(),
+			request.nickname()
 		);
 
 		user = userRepository.save(user);
-		return user.getId().toString();
+		return user.getNickname();
 	}
 
 	@Transactional(readOnly = true)
@@ -66,6 +67,26 @@ public class AuthService {
 		redisTemplate.opsForValue().set("refreshToken:" + user.getId(), refreshToken, Duration.ofDays(7));
 
 		return new LoginResponse(user.getId(), user.getEmail(), user.getTel(), accessToken, refreshToken);
+	}
+
+	@Transactional(readOnly = true)
+	public String refreshAccessToken(String refreshToken) {
+		if (!jwtTokenProvider.validateToken(refreshToken)) {
+			throw new IllegalArgumentException("유효하지 않은 리프레시 토큰입니다.");
+		}
+
+		Long userId = jwtTokenProvider.getUserId(refreshToken);
+
+		String storedToken = redisTemplate.opsForValue().get("refreshToken:" + userId);
+		if (storedToken == null || !storedToken.equals(refreshToken)) {
+			throw new IllegalArgumentException("리프레시 토큰이 만료되었거나 일치하지 않습니다.");
+		}
+
+		User user = userRepository.findById(userId)
+			.orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+
+		// 새 accessToken 발급
+		return jwtTokenProvider.generateAccessToken(user.getId(), user.getEmail());
 	}
 
 }

@@ -27,6 +27,10 @@ document.getElementById("loginForm").addEventListener("submit", async function (
             // 로그인 성공 시 채팅 탭 활성화
             document.querySelector("[data-tab='chat']").disabled = false;
             document.querySelector("[data-tab='chat']").classList.remove("disabled");
+
+            // 설문 탭도 같이 활성화
+            document.querySelector("[data-tab='survey']").disabled = false;
+            document.querySelector("[data-tab='survey']").classList.remove("disabled");
         } else {
             const error = await res.text();
             resultDiv.textContent = `로그인 실패: ${error}`;

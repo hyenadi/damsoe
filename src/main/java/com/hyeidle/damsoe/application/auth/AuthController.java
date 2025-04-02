@@ -9,6 +9,7 @@ import com.hyeidle.damsoe.application.auth.dto.request.LoginRequest;
 import com.hyeidle.damsoe.application.auth.dto.request.RegisterRequest;
 import com.hyeidle.damsoe.application.auth.dto.response.LoginResponse;
 
+import groovy.util.logging.Slf4j;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -18,7 +19,9 @@ import jakarta.validation.Valid;
 /**
  * 사용자 인증 관련 API를 제공한다.
  */
+@lombok.extern.slf4j.Slf4j
 @RestController
+@Slf4j
 public class AuthController {
 	private final AuthService authService;
 
@@ -46,6 +49,8 @@ public class AuthController {
 		)
 	)
 	public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest request) {
+
+		log.info(request.nickname());
 		String userId = authService.registerUser(request);
 		return ResponseEntity.ok(userId);
 	}

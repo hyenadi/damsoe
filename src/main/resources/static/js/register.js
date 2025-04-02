@@ -9,19 +9,20 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     const birthDate = document.getElementById("birthDate").value;
     const location = document.getElementById("location").value;
     const education = document.getElementById("education").value;
+    const nickname = document.getElementById("nickname").value;
 
     try {
         const res = await fetch("/api/auth/register", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({email, password, tel, name, gender, birthDate, location, education})
+            body: JSON.stringify({email, password, tel, name, gender, birthDate, location, education, nickname})
         });
 
         const resultDiv = document.getElementById("result");
 
         if (res.ok) {
-            const userId = await res.text();
-            resultDiv.textContent = `가입 성공! 사용자 ID: ${userId}`;
+            const userNickName = await res.text();
+            resultDiv.textContent = `가입 성공! 사용자 nickName: ${userNickName}`;
             resultDiv.style.color = "green";
         } else {
             const error = await res.text();

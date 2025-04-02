@@ -65,3 +65,15 @@ button:hover {
     margin-top: 10px;
     font-size: 14px;
 }
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+#surveyResult {
+    margin-top: 10px;
+    font-size: 14px;
+}

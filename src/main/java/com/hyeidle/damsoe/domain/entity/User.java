@@ -53,13 +53,16 @@ public class User {
 	@Column(name = "education", nullable = false)
 	private String education;
 
+	@Column(name = "nickname", nullable = false)
+	private String nickname;
+
 	@JdbcTypeCode(SqlTypes.VECTOR)
 	@Column(name = "persona_vector", columnDefinition = "vector")
 	@Setter
 	private float[] personaVector;
 
 	public User(String email, String passwordHash, String tel, String name, String gender, LocalDate birthDate,
-		String location, String education) {
+		String location, String education, String nickname) {
 		this.email = email;
 		this.passwordHash = passwordHash;
 		this.tel = tel;
@@ -68,5 +71,6 @@ public class User {
 		this.birthDate = birthDate;
 		this.location = location;
 		this.education = education;
+		this.nickname = nickname;
 	}
 }
