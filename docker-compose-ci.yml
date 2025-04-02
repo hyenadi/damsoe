@@ -58,8 +58,8 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/mydb
-      JWT_SECRET: ${JWT_TOKEN}
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/damsoe
+      jwt.secret: ${JWT_TOKEN}
     depends_on:
       postgres:
         condition: service_healthy
