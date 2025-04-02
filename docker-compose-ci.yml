@@ -42,7 +42,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     depends_on:
       zookeeper:
-        condition: service_started  # Zookeeper가 시작된 후 Kafka 시작
+        condition: service_started
   redis:
     image: redis:7.4
     ports:
@@ -59,7 +59,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
       SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/mydb
-      JWT_SECRET: ${JWT_SECRET}
+      JWT_SECRET: ${JWT_TOKEN}
     depends_on:
       postgres:
         condition: service_healthy
