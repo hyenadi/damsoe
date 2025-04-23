@@ -34,4 +34,9 @@ public class SurveyService {
 
 		surveyRepository.save(survey);
 	}
+
+	public Survey getSurveyDataByUserId(Long userId) {
+		return surveyRepository.findByUserId(userId)
+			.orElse(null);
+	}
 }

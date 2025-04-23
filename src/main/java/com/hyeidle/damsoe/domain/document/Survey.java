@@ -2,6 +2,7 @@ package com.hyeidle.damsoe.domain.document;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -15,7 +16,11 @@ import java.util.List;
 public class Survey {
 
 	@Id
+	private String id;
+
+	@Indexed
 	private Long userId;
+
 
 	// 전체 설문 결과를 하나의 객체로 묶음
 	private SurveyData data;
